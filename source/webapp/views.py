@@ -64,3 +64,15 @@ class UpdateTask(View):
             task.updated_at = datetime.datetime.now()
             task.save()
             return redirect("index_view", pk=task.pk)
+        return render(request, 'update_task.html', {"task": task, "form": form})
+
+
+class DeleteTask(View):
+    def get(self, request, *args, **kwargs):
+        task = get_object_or_404(Task, pk=kwargs.get("pk"))
+        return render(request, "delete_task.html", {"task": task})
+
+    def post(self, request, *args, **kwargs):
+        task = get_object_or_404(Task, pk=kwargs.get("pk"))
+        task.delete()
+        return redirect('index')
