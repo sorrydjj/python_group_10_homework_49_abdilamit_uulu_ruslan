@@ -3,8 +3,8 @@
   "model": "webapp.task",
   "pk": 1,
   "fields": {
-    "summary": "решить проблему",
-    "description": "ошибка авторизации",
+    "summary": "СЂРµС€РёС‚СЊ РїСЂРѕР±Р»РµРјСѓ",
+    "description": "РѕС€РёР±РєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё",
     "stats": 2,
     "types": 2,
     "created_at": "2022-01-13T11:19:31.619Z",
@@ -15,7 +15,7 @@
   "model": "webapp.task",
   "pk": 2,
   "fields": {
-    "summary": "Улушить код",
+    "summary": "РЈР»СѓС€РёС‚СЊ РєРѕРґ",
     "description": "print(\"hello world\")",
     "stats": 3,
     "types": 3,
@@ -27,8 +27,8 @@
   "model": "webapp.task",
   "pk": 3,
   "fields": {
-    "summary": "Сделать задачу",
-    "description": "Закомитить задачу и запушить в репозиторий",
+    "summary": "РЎРґРµР»Р°С‚СЊ Р·Р°РґР°С‡Сѓ",
+    "description": "Р—Р°РєРѕРјРёС‚РёС‚СЊ Р·Р°РґР°С‡Сѓ Рё Р·Р°РїСѓС€РёС‚СЊ РІ СЂРµРїРѕР·РёС‚РѕСЂРёР№",
     "stats": 1,
     "types": 1,
     "created_at": "2022-01-13T11:20:59.755Z",
