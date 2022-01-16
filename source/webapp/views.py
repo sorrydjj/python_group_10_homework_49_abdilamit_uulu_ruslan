@@ -22,6 +22,7 @@ class TaskView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         task = get_object_or_404(Task, pk=kwargs.get("pk"))
+
         context['task'] = task
         return context
 
@@ -37,7 +38,8 @@ class CreateTask(View):
             status = form.cleaned_data.get("status")
             type = form.cleaned_data.get("type")
             description = form.cleaned_data.get("description")
-            new_task = Task.objects.create(summary=name, stats=status, description=description, types=type)
+            new_task = Task.objects.create(summary=name, stats=status, description=description)
+            new_task.types.set(type)
             return redirect("index_view", pk=new_task.pk)
         return render(request, 'create_task.html', {"form": form})
 
