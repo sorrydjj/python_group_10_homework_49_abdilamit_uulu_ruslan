@@ -2,11 +2,14 @@
 
 {% block content %}
 
-<h2>Заголовок: {{ task.summary }}</h2>
-<p>Статус: {{ task.stats.name }}</p>
-{% for type in task.types.all %}
-    <p>Тип: {{ type }}</p>
-{% endfor %}
-<p>Описание: {{ task.description }}</p>
+    <h2>Заголовок: {{ task.summary }}</h2>
+    <p>Статус: {{ task.stats.name }}</p>
+    <p>Типы</p>
+    {% for type in task.types.all %}
+        {{ type.name }}{% if not forloop.last %}, {% else %}. {% endif %}
+    {% endfor %}
+    <br/>
+    <br/>
+    <p>Описание: {{ task.description }}</p>
 
 {% endblock %}
