@@ -8,9 +8,9 @@ class Task(models.Model):
                                on_delete=models.PROTECT,
                                related_name="status"
                                )
-    types = models.ForeignKey("webapp.Type",
-                             on_delete=models.PROTECT,
-                             related_name="types"
+    types = models.ManyToManyField("webapp.Type",
+                             related_name="types",
+                             blank=True
                              )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата изменения")
