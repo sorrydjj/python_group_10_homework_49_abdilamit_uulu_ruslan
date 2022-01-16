@@ -51,7 +51,7 @@ class UpdateTask(View):
             'title': task.summary,
             'description': task.description,
             'status': task.stats,
-            'type': task.types
+            'type': task.types.all()
         })
         return render(request, 'update_task.html', {"form": form})
 
@@ -61,7 +61,8 @@ class UpdateTask(View):
         if form.is_valid():
             task.summary = form.cleaned_data.get("title")
             task.stats = form.cleaned_data.get("status")
-            task.types = form.cleaned_data.get("type")
+            type = form.cleaned_data.get("type")
+            task.types.set(type)
             task.description = form.cleaned_data.get("description")
             task.updated_at = datetime.datetime.now()
             task.save()
