@@ -11,7 +11,8 @@ from webapp.models import Task, Status, Type
 from webapp.forms import TaskForm
 
 
-class IndexView(View):
+class IndexView(TemplateView):
+    template_name = "index.html"
     def get(self, request, *args, **kwargs):
         task = Task.objects.order_by("created_at")
         context = {"task": task}
