@@ -1,9 +1,11 @@
 from django.db import models
 
+from django.core.validators import MinLengthValidator
+
 # Create your models here.
 class Task(models.Model):
-    summary = models.CharField(max_length=200, null=False, blank=False, default="Unknown", verbose_name="Заголовок")
-    description = models.TextField(max_length=200, null=True, blank=True, verbose_name="Описанние")
+    summary = models.CharField(max_length=200, null=False, blank=False, default="Unknown", verbose_name="Заголовок", validators=(MinLengthValidator(5),))
+    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name="Описанние")
     stats = models.ForeignKey("webapp.Status",
                                on_delete=models.PROTECT,
                                related_name="status"
