@@ -55,6 +55,11 @@ class UpdateTask(FormView):
         context['task'] = self.task
         return context
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['instance'] = self.task
+        return kwargs
+
     def get_initial(self):
         initial = {}
         for key in 'summary', 'stats', 'description':
