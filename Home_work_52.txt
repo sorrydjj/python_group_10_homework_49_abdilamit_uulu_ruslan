@@ -7,4 +7,4 @@
 
 
 Задание N3:
-	Task.objects.filter(Q(stats__in=[1, 2]) & Q(summary__contains="bug") | Q(types__name="Bug"))
+	Task.objects.exclude(stats__name="Done").filter(Q(summary__contains="bug") | Q(types__name="Bug"))

@@ -3,8 +3,8 @@
   "model": "webapp.task",
   "pk": 1,
   "fields": {
-    "summary": "залить в гит",
-    "description": "залить в рмыв",
+    "summary": "Р·Р°Р»РёС‚СЊ РІ РіРёС‚",
+    "description": "Р·Р°Р»РёС‚СЊ РІ СЂРјС‹РІ",
     "stats": 3,
     "created_at": "2022-01-16T16:24:37.331Z",
     "updated_at": "2022-01-20T11:22:21.319Z",
