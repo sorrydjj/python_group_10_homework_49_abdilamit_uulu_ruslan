@@ -3,13 +3,15 @@
   "model": "webapp.task",
   "pk": 1,
   "fields": {
-    "summary": "Р·Р°Р»РёС‚СЊ РІ РіРёС‚",
-    "description": "Р·Р°Р»РёС‚СЊ РІ РіРёС‚",
-    "stats": 1,
+    "summary": "залить в гит",
+    "description": "залить в рмыв",
+    "stats": 3,
     "created_at": "2022-01-16T16:24:37.331Z",
-    "updated_at": "2022-01-16T16:56:24.939Z",
+    "updated_at": "2022-01-20T11:22:21.319Z",
     "types": [
-      1
+      1,
+      2,
+      3
     ]
   }
 },
@@ -19,9 +21,9 @@
   "fields": {
     "summary": "test1",
     "description": "test1gsfvxc",
-    "stats": 3,
+    "stats": 2,
     "created_at": "2022-01-16T16:52:07.128Z",
-    "updated_at": "2022-01-16T17:14:49.632Z",
+    "updated_at": "2022-01-24T10:44:47.440Z",
     "types": [
       1,
       3
@@ -55,6 +57,136 @@
     "updated_at": "2022-01-16T17:15:53.036Z",
     "types": [
       2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 31,
+  "fields": {
+    "summary": "Test4",
+    "description": "Test4",
+    "stats": 2,
+    "created_at": "2022-01-24T09:20:46.332Z",
+    "updated_at": "2022-01-24T09:20:46.332Z",
+    "types": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 32,
+  "fields": {
+    "summary": "Test5",
+    "description": "Test5",
+    "stats": 1,
+    "created_at": "2022-01-24T09:21:04.623Z",
+    "updated_at": "2022-01-24T09:21:04.623Z",
+    "types": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 33,
+  "fields": {
+    "summary": "Test6",
+    "description": "Test6",
+    "stats": 1,
+    "created_at": "2022-01-24T09:21:13.645Z",
+    "updated_at": "2022-01-24T09:21:13.645Z",
+    "types": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 34,
+  "fields": {
+    "summary": "Test7",
+    "description": "Test7",
+    "stats": 2,
+    "created_at": "2022-01-24T09:21:29.216Z",
+    "updated_at": "2022-01-24T09:21:29.216Z",
+    "types": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 35,
+  "fields": {
+    "summary": "Test8",
+    "description": "Test8",
+    "stats": 1,
+    "created_at": "2022-01-24T09:21:44.471Z",
+    "updated_at": "2022-01-24T09:21:44.471Z",
+    "types": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 36,
+  "fields": {
+    "summary": "Test9",
+    "description": "Test99",
+    "stats": 3,
+    "created_at": "2022-01-24T09:22:01.132Z",
+    "updated_at": "2022-01-24T09:22:01.132Z",
+    "types": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 37,
+  "fields": {
+    "summary": "Test10 bug",
+    "description": "Test100",
+    "stats": 1,
+    "created_at": "2022-01-24T09:22:15.551Z",
+    "updated_at": "2022-01-24T11:01:42.563Z",
+    "types": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 38,
+  "fields": {
+    "summary": "Test23",
+    "description": "23",
+    "stats": 2,
+    "created_at": "2022-01-24T09:47:55.959Z",
+    "updated_at": "2022-01-24T10:44:39.029Z",
+    "types": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 39,
+  "fields": {
+    "summary": "TEskk34 Bug",
+    "description": "234",
+    "stats": 2,
+    "created_at": "2022-01-24T09:49:46.371Z",
+    "updated_at": "2022-01-24T11:07:18.758Z",
+    "types": [
+      3
     ]
   }
 },
