@@ -36,3 +36,7 @@ class TaskForm(forms.ModelForm):
         if not self.cleaned_data.get('stats'):
             raise ValidationError("Выберите статус поста")
         return self.cleaned_data.get('stats')
+
+
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=30, required=False, label="Найти")

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% include 'partial/search_task.html' %}
     <h1>Список задач</h1>
 {% for ts in tasks%}
             <div style="border: 2px solid black; max-width: 300px; margin-bottom: 20px; padding-left: 15px;border-radius: 33px">
