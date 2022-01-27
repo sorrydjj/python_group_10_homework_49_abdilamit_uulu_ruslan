@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 from django.views import View
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, ListView
 from django.urls import reverse
 
 from webapp.models import Task, Status, Type
@@ -14,12 +14,26 @@ from webapp.forms import TaskForm
 from webapp.base import FormView as CustomFormView
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = "index.html"
-    def get(self, request, *args, **kwargs):
-        task = Task.objects.order_by("created_at")
-        context = {"task": task}
-        return render(request, 'index.html', context)
+    model = Task
+    context_object_name = "tasks"
+    paginate_by = 3
+    paginate_orphans = 0
+
+    def get_queryset(self):
+        queryset = super(IndexView, self).get_queryset()
+        return queryset.order_by('-updated_at')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(IndexView, self).get_context_data(object_list=object_list, **kwargs)
+        print(context)
+        return context
+
+    # def get(self, request, *args, **kwargs):
+    #     task = Task.objects.order_by("created_at")
+    #     context = {"task": task}
+    #     return render(request, 'index.html', context)
 
 class TaskView(TemplateView):
     template_name = "index_view.html"
