@@ -11,7 +11,7 @@ class Project(models.Model):
     descriptions = models.TextField(verbose_name="Описание", default="Missing")
 
     def __str__(self):
-        return f"{self.pk} | summary: {self.name}"
+        return f"{self.pk} | {self.name}"
 
     class Meta:
         db_table = "projects"
