@@ -12,7 +12,7 @@ from webapp.base import FormView as CustomFormView
 
 
 class IndexView(ListView):
-    template_name = "index.html"
+    template_name = "tasks/index.html"
     model = Task
     context_object_name = "tasks"
     paginate_by = 10
@@ -61,7 +61,7 @@ class IndexView(ListView):
     #     return render(request, 'index.html', context)
 
 class TaskView(TemplateView):
-    template_name = "index_view.html"
+    template_name = "tasks/view.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         task = get_object_or_404(Task, pk=kwargs.get("pk"))
@@ -71,7 +71,7 @@ class TaskView(TemplateView):
 
 class CreateTask(CustomFormView):
     form_class = TaskForm
-    template_name = "create_task.html"
+    template_name = "tasks/create.html"
 
     def form_valid(self, form):
         self.object = form.save()
@@ -83,7 +83,7 @@ class CreateTask(CustomFormView):
 
 class UpdateTask(FormView):
     form_class = TaskForm
-    template_name = "update_task.html"
+    template_name = "tasks/update.html"
 
     def dispatch(self, request, *args, **kwargs):
         self.task = self.get_object()
@@ -120,7 +120,7 @@ class UpdateTask(FormView):
 class DeleteTask(View):
     def get(self, request, *args, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get("pk"))
-        return render(request, "delete_task.html", {"task": task})
+        return render(request, "tasks/delete.html", {"task": task})
 
     def post(self, request, *args, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get("pk"))
