@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import TemplateView, FormView, ListView
+from django.views.generic import TemplateView, FormView, ListView, DetailView
 from django.urls import reverse
 from django.db.models import Q
 from webapp.forms import SearchForm
@@ -40,3 +40,14 @@ class IndexProject(ListView):
     def get_search_value(self):
         if self.form.is_valid():
             return self.form.cleaned_data.get("search")
+
+
+class ProjectView(DetailView):
+    template_name = 'project/view.html'
+    model = Project
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        projects = Task.objects.filter(project__pk=self.object.pk)
+        context['project'] = projects
+        return context
