@@ -3,7 +3,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import widgets
 
-from webapp.models import Type, Status, Task
+from webapp.models import Type, Status, Task, Project
 
 
 class TaskForm(forms.ModelForm):
@@ -40,3 +40,25 @@ class TaskForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     search = forms.CharField(max_length=30, required=False, label="Найти")
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        exclude = []
+        widgets = {
+            "date_start": forms.DateInput(attrs={'placeholder': 'yyyy-mm-dd'}),
+            "date_end": forms.DateInput(attrs={'placeholder': 'yyyy-mm-dd'})
+        }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data.get('descriptions') == cleaned_data.get('name'):
+            raise ValidationError("Text of the article should not duplicate it's title!")
+        return
+
+    def clean_name(self):
+        if len(self.cleaned_data.get('name')) < 5:
+            raise ValidationError(
+                f"Значение должно быть длиннее 5 символов {self.cleaned_data.get('name')} не подходит")
+        return self.cleaned_data.get('name')

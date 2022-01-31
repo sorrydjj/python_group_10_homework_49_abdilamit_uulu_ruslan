@@ -1,8 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import TemplateView, FormView, ListView, DetailView
-from django.urls import reverse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views.generic import ListView, DetailView, CreateView
 from django.db.models import Q
-from webapp.forms import SearchForm
+from webapp.forms import SearchForm, ProjectForm
 
 from webapp.models import Task, Status, Type, Project
 
@@ -51,3 +50,17 @@ class ProjectView(DetailView):
         projects = Task.objects.filter(project__pk=self.object.pk)
         context['project'] = projects
         return context
+
+
+class ProjectCreate(CreateView):
+    model = Project
+    form_class = ProjectForm
+    template_name = "project/create.html"
+
+    def form_valid(self, form):
+        form.save()
+        return redirect('project')
+
+    def form_invalid(self, form):
+        context = {'form': form}
+        return render(self.request, self.template_name, context)
