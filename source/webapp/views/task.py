@@ -69,17 +69,6 @@ class TaskView(TemplateView):
         context['task'] = task
         return context
 
-class CreateTask(CustomFormView):
-    form_class = TaskForm
-    template_name = "tasks/create.html"
-
-    def form_valid(self, form):
-        self.object = form.save()
-        return super().form_valid(form)
-
-    def get_redirect_url(self):
-        return redirect("index_view", pk=self.object.pk)
-
 
 class UpdateTask(FormView):
     form_class = TaskForm
