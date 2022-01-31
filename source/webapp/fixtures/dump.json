@@ -1,15 +1,65 @@
 [
 {
+  "model": "webapp.project",
+  "pk": 1,
+  "fields": {
+    "date_start": "2022-01-31",
+    "date_end": "2022-02-23",
+    "name": "project git",
+    "descriptions": "git commit"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 2,
+  "fields": {
+    "date_start": "2022-01-02",
+    "date_end": "2022-01-24",
+    "name": "test",
+    "descriptions": "test2"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 3,
+  "fields": {
+    "date_start": "2022-01-02",
+    "date_end": "2023-01-30",
+    "name": "Unknown",
+    "descriptions": "Missing"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 5,
+  "fields": {
+    "date_start": "2022-01-02",
+    "date_end": "2022-02-23",
+    "name": "test project 3",
+    "descriptions": "testing"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 6,
+  "fields": {
+    "date_start": "2022-01-02",
+    "date_end": "2022-02-23",
+    "name": "Testing",
+    "descriptions": "Test Error form"
+  }
+},
+{
   "model": "webapp.task",
   "pk": 1,
   "fields": {
-    "summary": "залить в гит",
-    "description": "залить в рмыв",
-    "stats": 3,
-    "created_at": "2022-01-16T16:24:37.331Z",
-    "updated_at": "2022-01-20T11:22:21.319Z",
+    "summary": "test1",
+    "description": "test10",
+    "stats": 1,
+    "project": 1,
+    "created_at": "2022-01-31T08:29:38.389Z",
+    "updated_at": "2022-01-31T08:29:38.389Z",
     "types": [
-      1,
       2,
       3
     ]
@@ -19,14 +69,15 @@
   "model": "webapp.task",
   "pk": 2,
   "fields": {
-    "summary": "test1",
-    "description": "test1gsfvxc",
-    "stats": 2,
-    "created_at": "2022-01-16T16:52:07.128Z",
-    "updated_at": "2022-01-24T10:44:47.440Z",
+    "summary": "test2",
+    "description": "test20",
+    "stats": 1,
+    "project": 1,
+    "created_at": "2022-01-31T08:30:08.041Z",
+    "updated_at": "2022-01-31T08:30:08.041Z",
     "types": [
       1,
-      3
+      2
     ]
   }
 },
@@ -34,15 +85,14 @@
   "model": "webapp.task",
   "pk": 3,
   "fields": {
-    "summary": "test2",
-    "description": "test2",
+    "summary": "test3",
+    "description": "test30",
     "stats": 3,
-    "created_at": "2022-01-16T17:01:24.433Z",
-    "updated_at": "2022-01-16T17:15:28.667Z",
+    "project": 2,
+    "created_at": "2022-01-31T08:35:22.651Z",
+    "updated_at": "2022-01-31T08:35:22.651Z",
     "types": [
-      1,
-      2,
-      3
+      1
     ]
   }
 },
@@ -50,98 +100,29 @@
   "model": "webapp.task",
   "pk": 4,
   "fields": {
-    "summary": "Test3",
-    "description": "test3",
-    "stats": 1,
-    "created_at": "2022-01-16T17:15:14.123Z",
-    "updated_at": "2022-01-16T17:15:53.036Z",
-    "types": [
-      2
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 31,
-  "fields": {
-    "summary": "Test4",
-    "description": "Test4",
-    "stats": 2,
-    "created_at": "2022-01-24T09:20:46.332Z",
-    "updated_at": "2022-01-24T09:20:46.332Z",
-    "types": [
-      2
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 32,
-  "fields": {
-    "summary": "Test5",
-    "description": "Test5",
-    "stats": 1,
-    "created_at": "2022-01-24T09:21:04.623Z",
-    "updated_at": "2022-01-24T09:21:04.623Z",
-    "types": [
-      2
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 33,
-  "fields": {
-    "summary": "Test6",
-    "description": "Test6",
-    "stats": 1,
-    "created_at": "2022-01-24T09:21:13.645Z",
-    "updated_at": "2022-01-24T09:21:13.645Z",
-    "types": [
-      2
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 34,
-  "fields": {
-    "summary": "Test7",
-    "description": "Test7",
-    "stats": 2,
-    "created_at": "2022-01-24T09:21:29.216Z",
-    "updated_at": "2022-01-24T09:21:29.216Z",
-    "types": [
-      2,
-      3
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 35,
-  "fields": {
-    "summary": "Test8",
-    "description": "Test8",
-    "stats": 1,
-    "created_at": "2022-01-24T09:21:44.471Z",
-    "updated_at": "2022-01-24T09:21:44.471Z",
-    "types": [
-      1,
-      2
-    ]
-  }
-},
-{
-  "model": "webapp.task",
-  "pk": 36,
-  "fields": {
-    "summary": "Test9",
-    "description": "Test99",
+    "summary": "test4",
+    "description": "test40",
     "stats": 3,
-    "created_at": "2022-01-24T09:22:01.132Z",
-    "updated_at": "2022-01-24T09:22:01.132Z",
+    "project": 1,
+    "created_at": "2022-01-31T08:40:31.354Z",
+    "updated_at": "2022-01-31T08:40:31.354Z",
     "types": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 5,
+  "fields": {
+    "summary": "test5",
+    "description": "test50",
+    "stats": 1,
+    "project": 2,
+    "created_at": "2022-01-31T08:40:59.199Z",
+    "updated_at": "2022-01-31T08:40:59.199Z",
+    "types": [
+      1,
       2,
       3
     ]
@@ -149,13 +130,76 @@
 },
 {
   "model": "webapp.task",
-  "pk": 37,
+  "pk": 6,
   "fields": {
-    "summary": "Test10 bug",
-    "description": "Test100",
+    "summary": "test task",
+    "description": "dsfdf",
+    "stats": 2,
+    "project": 2,
+    "created_at": "2022-01-31T10:56:05.375Z",
+    "updated_at": "2022-01-31T12:23:12.752Z",
+    "types": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 7,
+  "fields": {
+    "summary": "test 7",
+    "description": "test7",
     "stats": 1,
-    "created_at": "2022-01-24T09:22:15.551Z",
-    "updated_at": "2022-01-24T11:01:42.563Z",
+    "project": 5,
+    "created_at": "2022-01-31T11:35:48.800Z",
+    "updated_at": "2022-01-31T11:35:48.800Z",
+    "types": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 8,
+  "fields": {
+    "summary": "test8",
+    "description": "test 80",
+    "stats": 3,
+    "project": 3,
+    "created_at": "2022-01-31T11:36:12.393Z",
+    "updated_at": "2022-01-31T11:36:12.393Z",
+    "types": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 9,
+  "fields": {
+    "summary": "test 9",
+    "description": "test 90",
+    "stats": 2,
+    "project": 5,
+    "created_at": "2022-01-31T11:36:41.561Z",
+    "updated_at": "2022-01-31T11:36:41.561Z",
+    "types": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 10,
+  "fields": {
+    "summary": "test 10",
+    "description": "tets 100",
+    "stats": 1,
+    "project": 1,
+    "created_at": "2022-01-31T11:37:39.181Z",
+    "updated_at": "2022-01-31T11:37:39.181Z",
     "types": [
       1,
       2
@@ -164,30 +208,28 @@
 },
 {
   "model": "webapp.task",
-  "pk": 38,
+  "pk": 11,
   "fields": {
-    "summary": "Test23",
-    "description": "23",
-    "stats": 2,
-    "created_at": "2022-01-24T09:47:55.959Z",
-    "updated_at": "2022-01-24T10:44:39.029Z",
-    "types": [
-      3
-    ]
+    "summary": "testins create project task",
+    "description": "asdss",
+    "stats": 1,
+    "project": 6,
+    "created_at": "2022-01-31T12:34:11.071Z",
+    "updated_at": "2022-01-31T12:34:11.071Z",
+    "types": []
   }
 },
 {
   "model": "webapp.task",
-  "pk": 39,
+  "pk": 12,
   "fields": {
-    "summary": "TEskk34 Bug",
-    "description": "234",
-    "stats": 2,
-    "created_at": "2022-01-24T09:49:46.371Z",
-    "updated_at": "2022-01-24T11:07:18.758Z",
-    "types": [
-      3
-    ]
+    "summary": "tttests",
+    "description": "ttests",
+    "stats": 1,
+    "project": 6,
+    "created_at": "2022-01-31T12:34:34.011Z",
+    "updated_at": "2022-01-31T12:34:34.011Z",
+    "types": []
   }
 },
 {
@@ -237,7 +279,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$320000$XkT2LOMRMwDlgvdzpTL2vI$zlIj5u7CFfFVKpFXvL/9qi+nDRje/7N8Q71auB++3LA=",
-    "last_login": "2022-01-13T11:16:56.085Z",
+    "last_login": "2022-01-31T08:22:46.794Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",

@@ -5,7 +5,7 @@ from webapp.forms import SearchForm, ProjectForm
 
 from webapp.models import Task, Status, Type, Project
 
-from source.webapp.forms import TaskForm
+from webapp.forms import TaskForm
 
 
 class IndexProject(ListView):
