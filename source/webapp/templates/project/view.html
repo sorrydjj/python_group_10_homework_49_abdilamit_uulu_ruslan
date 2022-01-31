@@ -3,14 +3,15 @@
 {% block content %}
     <h1>Списки задач</h1>
 
-    {% for pj in project %}
+    {% for ts in task %}
         <div style="border: 2px solid black; max-width: 300px; margin-bottom: 20px; padding-left: 15px;border-radius: 33px">
-            <h3 style=" text-overflow: ellipsis; max-width: 300px;white-space: nowrap; overflow:hidden;">{{ pj.summary }}</h3>
-            <p><a style="text-decoration: none" href="{% url "index_view" pj.pk %}">Подробно....</a></p>
-            <p><a style="text-decoration: none" href="{% url "update" pj.pk %}">Редактировать</a></p>
-            <p><a style="text-decoration: none" href="{% url "delete" pj.pk %}">Удалить</a></p>
+            <h3 style=" text-overflow: ellipsis; max-width: 300px;white-space: nowrap; overflow:hidden;">{{ ts.summary }}</h3>
+            <p><a style="text-decoration: none" href="{% url "index_view" ts.pk %}">Подробно....</a></p>
+            <p><a style="text-decoration: none" href="{% url "update" ts.pk %}">Редактировать</a></p>
+            <p><a style="text-decoration: none" href="{% url "delete" ts.pk %}">Удалить</a></p>
             </div>
 
     {% endfor %}
     <p><a href="{% url "project" %}">На страницу проекта.</a></p>
+    <p><a href="{% url "create_task" project.pk%}">Создать задачу.</a></p>
 {% endblock %}

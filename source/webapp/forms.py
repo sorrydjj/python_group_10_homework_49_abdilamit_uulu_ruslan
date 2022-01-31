@@ -9,7 +9,7 @@ from webapp.models import Type, Status, Task, Project
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        exclude = []
+        exclude = ["project"]
         widgets = {
             "types": forms.CheckboxSelectMultiple
         }

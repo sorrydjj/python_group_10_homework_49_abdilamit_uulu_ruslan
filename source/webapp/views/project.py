@@ -5,6 +5,9 @@ from webapp.forms import SearchForm, ProjectForm
 
 from webapp.models import Task, Status, Type, Project
 
+from source.webapp.forms import TaskForm
+
+
 class IndexProject(ListView):
     template_name = "project/index.html"
     model = Project
@@ -47,8 +50,10 @@ class ProjectView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        projects = Task.objects.filter(project__pk=self.object.pk)
-        context['project'] = projects
+        task = Task.objects.filter(project__pk=self.object.pk)
+        project = self.object
+        context['task'] = task
+        context['project'] = project
         return context
 
 
@@ -60,6 +65,24 @@ class ProjectCreate(CreateView):
     def form_valid(self, form):
         form.save()
         return redirect('project')
+
+    def form_invalid(self, form):
+        context = {'form': form}
+        return render(self.request, self.template_name, context)
+
+
+class ProjectCreateTask(CreateView):
+    model = Task
+    form_class = TaskForm
+    template_name = "project/create_task.html"
+
+
+    def form_valid(self, form):
+        project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
+        task = form.save(commit=False)
+        task.project = project
+        task.save()
+        return redirect('project_view', pk=project.pk)
 
     def form_invalid(self, form):
         context = {'form': form}
