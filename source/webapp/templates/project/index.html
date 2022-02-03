@@ -11,6 +11,7 @@
             <p>Дата окончания: {{ pj.date_end }}</p>
             <p><a href="{% url "project_view" pj.pk %}">Подробно....</a></p>
             <p><a href="{% url "project_update" pj.pk %}">Редактировать.</a></p>
+            <p><a href="{% url "project_delete" pj.pk %}">Удалить.</a></p>
             </div>
         {% endfor %}
 

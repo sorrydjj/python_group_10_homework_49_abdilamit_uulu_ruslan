@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
 from django.urls import reverse
 
@@ -95,6 +95,17 @@ class ProjectUpdate(UpdateView):
     form_class = ProjectForm
     template_name = "project/update.html"
     model = Project
+
+    def get_success_url(self):
+        return reverse("project")
+
+
+class ProjectDelete(DeleteView):
+    model = Project
+    template_name = "project/delete.html"
+
+    def post(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse("project")
