@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from django.views.generic import TemplateView, FormView, ListView, UpdateView
+from django.views.generic import TemplateView, ListView, UpdateView, DeleteView
 from django.urls import reverse
 
 from webapp.models import Task, Status, Type
@@ -78,12 +78,12 @@ class UpdateTask(UpdateView):
         return reverse("index_view", kwargs={"pk": self.object.pk})
 
 
-class DeleteTask(View):
-    def get(self, request, *args, **kwargs):
-        task = get_object_or_404(Task, pk=kwargs.get("pk"))
-        return render(request, "tasks/delete.html", {"task": task})
+class DeleteTask(DeleteView):
+    template_name = "tasks/delete.html"
+    model = Task
 
     def post(self, request, *args, **kwargs):
-        task = get_object_or_404(Task, pk=kwargs.get("pk"))
-        task.delete()
-        return redirect('index')
+        return super().delete(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse("project_view", kwargs={"pk": self.object.project.pk})
