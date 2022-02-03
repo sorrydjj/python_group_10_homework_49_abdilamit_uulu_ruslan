@@ -10,6 +10,7 @@
             <p>Дата создание: {{ pj.date_start }}</p>
             <p>Дата окончания: {{ pj.date_end }}</p>
             <p><a href="{% url "project_view" pj.pk %}">Подробно....</a></p>
+            <p><a href="{% url "project_update" pj.pk %}">Редактировать.</a></p>
             </div>
         {% endfor %}
 

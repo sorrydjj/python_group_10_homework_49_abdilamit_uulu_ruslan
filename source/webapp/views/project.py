@@ -1,10 +1,11 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.db.models import Q
-from webapp.forms import SearchForm, ProjectForm
+from django.urls import reverse
 
 from webapp.models import Task, Status, Type, Project
 
+from webapp.forms import SearchForm, ProjectForm
 from webapp.forms import TaskForm
 
 
@@ -88,3 +89,12 @@ class ProjectCreateTask(CreateView):
     def form_invalid(self, form):
         context = {'form': form}
         return render(self.request, self.template_name, context)
+
+
+class ProjectUpdate(UpdateView):
+    form_class = ProjectForm
+    template_name = "project/update.html"
+    model = Project
+
+    def get_success_url(self):
+        return reverse("project")
