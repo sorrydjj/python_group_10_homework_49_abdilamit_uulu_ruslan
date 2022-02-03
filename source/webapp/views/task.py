@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from django.views.generic import TemplateView, FormView, ListView
+from django.views.generic import TemplateView, FormView, ListView, UpdateView
 from django.urls import reverse
 
 from webapp.models import Task, Status, Type
@@ -46,19 +46,6 @@ class IndexView(ListView):
         if self.form.is_valid():
             return self.form.cleaned_data.get("search")
 
-    # def get_queryset(self):
-    #     queryset = super(IndexView, self).get_queryset()
-    #     return queryset.order_by('-updated_at')
-    #
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super(IndexView, self).get_context_data(object_list=object_list, **kwargs)
-    #     print(context)
-    #     return context
-
-    # def get(self, request, *args, **kwargs):
-    #     task = Task.objects.order_by("created_at")
-    #     context = {"task": task}
-    #     return render(request, 'index.html', context)
 
 class TaskView(TemplateView):
     template_name = "tasks/view.html"
@@ -70,40 +57,25 @@ class TaskView(TemplateView):
         return context
 
 
-class UpdateTask(FormView):
+class CreateTask(CustomFormView):
     form_class = TaskForm
-    template_name = "tasks/update.html"
-
-    def dispatch(self, request, *args, **kwargs):
-        self.task = self.get_object()
-        return super(UpdateTask, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['task'] = self.task
-        return context
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['instance'] = self.task
-        return kwargs
-
-    def get_initial(self):
-        initial = {}
-        for key in 'summary', 'stats', 'description':
-            initial[key] = getattr(self.task, key)
-        initial['types'] = self.task.types.all()
-        return initial
+    template_name = "tasks/create.html"
 
     def form_valid(self, form):
-        self.task = form.save()
+        self.object = form.save()
         return super().form_valid(form)
 
-    def get_success_url(self):
-        return reverse('index_view', kwargs={"pk": self.task.pk})
+    def get_redirect_url(self):
+        return redirect("index_view", pk=self.object.pk)
 
-    def get_object(self):
-        return get_object_or_404(Task, pk=self.kwargs.get("pk"))
+
+class UpdateTask(UpdateView):
+    form_class = TaskForm
+    template_name = "tasks/update.html"
+    model = Task
+
+    def get_success_url(self):
+        return reverse("index_view", kwargs={"pk": self.object.pk})
 
 
 class DeleteTask(View):
