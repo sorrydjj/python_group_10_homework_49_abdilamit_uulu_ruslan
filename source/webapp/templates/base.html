@@ -25,9 +25,18 @@
                     <li class="nav-item">
                     <a class="nav-link" href="{% url 'webapp:project' %}">Проекты</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'webapp:project_create' %}">Создание проекта</a>
-                </li>
+                {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'webapp:project_create' %}">Создание проекта</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
+                    </li>
+                {% endif %}
                 {% endblock %}
             </ul>
         </div>

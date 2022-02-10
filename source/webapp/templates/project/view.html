@@ -1,4 +1,22 @@
 {% extends "base.html" %}
+{% block nav %}
+    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'webapp:project_create' %}">Создание проекта</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "webapp:create_task" project.pk %}">Создать задачу</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'webapp:project_update' project.pk %}">Редактировать проект</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'webapp:project_delete' project.pk %}">Удалить проект</a>
+                    </li>
+
+                {% endif %}
+{% endblock %}
+
 
 {% block content %}
     <h1>Списки задач</h1>
@@ -7,11 +25,13 @@
         <div style="border: 2px solid black; max-width: 300px; margin-bottom: 20px; padding-left: 15px;border-radius: 33px">
             <h3 style=" text-overflow: ellipsis; max-width: 300px;white-space: nowrap; overflow:hidden;">{{ ts.summary }}</h3>
             <p><a style="text-decoration: none" href="{% url "webapp:task_view" ts.pk %}">Подробно....</a></p>
-            <p><a style="text-decoration: none" href="{% url "webapp:update" ts.pk %}">Редактировать</a></p>
-            <p><a style="text-decoration: none" href="{% url "webapp:delete" ts.pk %}">Удалить</a></p>
-            </div>
+            {% if user.is_authenticated %}
+
+                <p><a style="text-decoration: none" href="{% url "webapp:update" ts.pk %}">Редактировать</a></p>
+                <p><a style="text-decoration: none" href="{% url "webapp:delete" ts.pk %}">Удалить</a></p>
+            {% endif %}
+        </div>
 
     {% endfor %}
     <p><a href="{% url "webapp:project" %}">На страницу проекта.</a></p>
-    <p><a href="{% url "webapp:create_task" project.pk%}">Создать задачу.</a></p>
 {% endblock %}

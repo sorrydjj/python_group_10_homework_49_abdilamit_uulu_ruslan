@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
@@ -58,7 +59,7 @@ class ProjectView(DetailView):
         return context
 
 
-class ProjectCreate(CreateView):
+class ProjectCreate(LoginRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
     template_name = "project/create.html"
@@ -72,7 +73,7 @@ class ProjectCreate(CreateView):
         return render(self.request, self.template_name, context)
 
 
-class ProjectCreateTask(CreateView):
+class ProjectCreateTask(LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = "project/create_task.html"
@@ -92,7 +93,7 @@ class ProjectCreateTask(CreateView):
         return render(self.request, self.template_name, context)
 
 
-class ProjectUpdate(UpdateView):
+class ProjectUpdate(LoginRequiredMixin, UpdateView):
     form_class = ProjectForm
     template_name = "project/update.html"
     model = Project
@@ -101,7 +102,7 @@ class ProjectUpdate(UpdateView):
         return reverse("project")
 
 
-class ProjectDelete(DeleteView):
+class ProjectDelete(LoginRequiredMixin, DeleteView):
     model = Project
     template_name = "project/delete.html"
 
