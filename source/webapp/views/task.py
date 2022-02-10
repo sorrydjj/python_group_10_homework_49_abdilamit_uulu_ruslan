@@ -66,7 +66,7 @@ class CreateTask(CustomFormView):
         return super().form_valid(form)
 
     def get_redirect_url(self):
-        return redirect("index_view", pk=self.object.pk)
+        return redirect("task_view", pk=self.object.pk)
 
 
 class UpdateTask(UpdateView):
@@ -75,7 +75,7 @@ class UpdateTask(UpdateView):
     model = Task
 
     def get_success_url(self):
-        return reverse("index_view", kwargs={"pk": self.object.pk})
+        return reverse("task_view", kwargs={"pk": self.object.pk})
 
 
 class DeleteTask(DeleteView):

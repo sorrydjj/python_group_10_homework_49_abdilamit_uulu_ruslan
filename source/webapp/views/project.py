@@ -81,6 +81,7 @@ class ProjectCreateTask(CreateView):
     def form_valid(self, form):
         project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
         self.object = form.save(commit=False)
+        print(form)
         self.object.project = project
         self.object.save()
         form.save_m2m()
