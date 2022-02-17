@@ -45,7 +45,7 @@ class SearchForm(forms.Form):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        exclude = []
+        exclude = ["users"]
         widgets = {
             "date_start": forms.DateInput(attrs={'placeholder': 'yyyy-mm-dd'}),
             "date_end": forms.DateInput(attrs={'placeholder': 'yyyy-mm-dd'})
@@ -62,3 +62,16 @@ class ProjectForm(forms.ModelForm):
             raise ValidationError(
                 f"Значение должно быть длиннее 5 символов {self.cleaned_data.get('name')} не подходит")
         return self.cleaned_data.get('name')
+
+class ProjectAddUserForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        users = kwargs.pop('users')
+        super().__init__(*args, **kwargs)
+        self.fields['users'].queryset = users
+
+    class Meta:
+        model = Project
+        exclude = ["name", "descriptions", "date_end", "date_start"]
+        widgets = {
+            "users": forms.CheckboxSelectMultiple,
+            }

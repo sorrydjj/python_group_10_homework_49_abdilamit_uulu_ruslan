@@ -11,8 +11,12 @@
             <p>Дата окончания: {{ pj.date_end }}</p>
             <p><a href="{% url "webapp:project_view" pj.pk %}">Подробно....</a></p>
              {% if user.is_authenticated %}
-                <p><a href="{% url "webapp:project_update" pj.pk %}">Редактировать.</a></p>
-                <p><a href="{% url "webapp:project_delete" pj.pk %}">Удалить.</a></p>
+                 {% if perms.webapp.change_project %}
+                    <p><a href="{% url "webapp:project_update" pj.pk %}">Редактировать.</a></p>
+                 {% endif %}
+                 {% if perms.webapp.delete_project %}
+                    <p><a href="{% url "webapp:project_delete" pj.pk %}">Удалить.</a></p>
+                {% endif %}
             {% endif %}
             </div>
         {% endfor %}

@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
@@ -70,18 +70,20 @@ class CreateTask(LoginRequiredMixin, CustomFormView):
         return redirect("task_view", pk=self.object.pk)
 
 
-class UpdateTask(LoginRequiredMixin, UpdateView):
+class UpdateTask(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     form_class = TaskForm
     template_name = "tasks/update.html"
     model = Task
+    permission_required = "webapp.change_task"
 
     def get_success_url(self):
         return reverse("task_view", kwargs={"pk": self.object.pk})
 
 
-class DeleteTask(LoginRequiredMixin, DeleteView):
+class DeleteTask(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     template_name = "tasks/delete.html"
     model = Task
+    permission_required = "webapp.delete_task"
 
     def post(self, request, *args, **kwargs):
         return super().delete(request, *args, **kwargs)
