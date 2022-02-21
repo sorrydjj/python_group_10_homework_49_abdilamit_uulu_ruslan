@@ -1,0 +1,27 @@
+{% if is_paginated %}
+    {% include 'partial/pagination.html' %}
+{% endif %}
+
+<h2>Проекты</h2>
+
+{% for project in projects %}
+
+    <h3>{{ project.name }}</h3>
+
+    <p><a href="{% url "webapp:project_view" project.pk %}">Подробнее...</a></p>
+
+    {% if perms.webapp.change_project or user == project.name %}
+        <p><a href="{% url "webapp:project_update" project.pk %}">Редактировать</a></p>
+    {% endif %}
+
+    {% if perms.webapp.delete_project %}
+        <p><a href="{% url "webapp:project_delete" project.pk %}">Удалить</a></p>
+    {% endif %}
+
+{% empty %}
+    <p>Статьи не найдены...</p>
+{% endfor %}
+
+{% if is_paginated %}
+    {% include 'partial/pagination.html' %}
+{% endif %}

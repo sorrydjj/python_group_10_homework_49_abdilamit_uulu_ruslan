@@ -60,6 +60,7 @@ class ProjectView(DetailView):
         return context
 
 
+
 class ProjectCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
