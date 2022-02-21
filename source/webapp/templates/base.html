@@ -36,6 +36,11 @@
                     <li class="nav-item">
                         <p class="nav-link">Привет, <a href="{% url 'accounts:user_profile' user.id %}">{{ user.username }}</a></p>
                     </li>
+                    {% if perms.auth.view_user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:users_list' %}">Список пользователей</a>
+                        </li>
+                    {% endif %}
                     {% if perms.webapp.add_project %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'webapp:project_create' %}">Создание проекта</a>
