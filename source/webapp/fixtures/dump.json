@@ -39,6 +39,18 @@
   }
 },
 {
+  "model": "webapp.project",
+  "pk": 17,
+  "fields": {
+    "date_start": "2022-01-02",
+    "date_end": "2022-02-23",
+    "name": "Test admin projtcs",
+    "users": [
+      1
+    ]
+  }
+},
+{
   "model": "webapp.task",
   "pk": 20,
   "fields": {
@@ -148,6 +160,21 @@
   }
 },
 {
+  "model": "webapp.task",
+  "pk": 27,
+  "fields": {
+    "summary": "test admin",
+    "description": "asd",
+    "stats": 1,
+    "project": 17,
+    "created_at": "2022-02-21T10:35:04.838Z",
+    "updated_at": "2022-02-21T10:35:04.838Z",
+    "types": [
+      3
+    ]
+  }
+},
+{
   "model": "webapp.status",
   "pk": 1,
   "fields": {
@@ -194,15 +221,15 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$320000$XkT2LOMRMwDlgvdzpTL2vI$zlIj5u7CFfFVKpFXvL/9qi+nDRje/7N8Q71auB++3LA=",
-    "last_login": "2022-02-17T14:16:27.619Z",
+    "last_login": "2022-02-21T10:07:20.655Z",
     "is_superuser": true,
     "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
+    "first_name": "test name",
+    "last_name": "test last name",
+    "email": "asds@mail.ru",
     "is_staff": true,
     "is_active": true,
-    "date_joined": "2022-01-13T11:15:13.527Z",
+    "date_joined": "2022-01-13T11:15:13Z",
     "groups": [],
     "user_permissions": []
   }
@@ -212,7 +239,7 @@
   "pk": 4,
   "fields": {
     "password": "pbkdf2_sha256$320000$goryGuMqlFEwKXmiS6sqYA$qD0eo7D8osguZkLAo6AVYAA8g5UU4QgZb5XoqktJ9IY=",
-    "last_login": "2022-02-17T14:37:32.685Z",
+    "last_login": "2022-02-21T10:13:03.453Z",
     "is_superuser": false,
     "username": "manager",
     "first_name": "",
@@ -232,7 +259,7 @@
   "pk": 5,
   "fields": {
     "password": "pbkdf2_sha256$320000$JdQq4OihdGJ04O07OROkrG$Ot9DCbV/iT1L0sGoNg7BqCx/ije44CNj82Us2ylrwRg=",
-    "last_login": "2022-02-17T14:36:03.684Z",
+    "last_login": "2022-02-21T10:10:51.610Z",
     "is_superuser": false,
     "username": "lead",
     "first_name": "",
@@ -252,7 +279,7 @@
   "pk": 6,
   "fields": {
     "password": "pbkdf2_sha256$320000$rAm73Qog6QcKQJRoIaEETf$R/++3+3vAoQxOC8MecFX7wUMVXDINqqYKymRBE7h8A8=",
-    "last_login": "2022-02-17T14:36:28.387Z",
+    "last_login": "2022-02-21T10:11:01.598Z",
     "is_superuser": false,
     "username": "dev",
     "first_name": "",
